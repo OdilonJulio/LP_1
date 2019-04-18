@@ -18,6 +18,7 @@ class Conjunto{
 		bool busca(T elemento_); // Verifica se um dado elemento pertence ou não ao conjunto referência.
 		Conjunto<T> operator + (Conjunto<T> & conjunto_); // União de conjuntos.
 		Conjunto<T> operator - (Conjunto<T> & conjunto_); // Diferença de conjuntos.
+		Conjunto<T> operator * (Conjunto<T> & conjunto_); // Intersecção de conjuntos.
 };
 
 template<typename T>
@@ -26,7 +27,9 @@ Conjunto<T>::Conjunto(){
 
 template<typename T>
 void Conjunto<T>::add(T elemento_){
-	this->elementos.push_back(elemento_);
+	if( this->busca(elemento_) == false ){
+		this->elementos.push_back(elemento_);
+	}
 }
 
 template<typename T>
@@ -97,40 +100,24 @@ Conjunto<T> Conjunto<T>::operator - (Conjunto<T> & conjunto_){
 	return tmp;
 }
 
-
-
-
 /*
-SOBRECARREGAR
-
-Operadores 
-
-+ -> União de conjuntos; OK
-
-- -> Diferença de conjuntos;
-
-* -> Interseção;
-
+=== Implementação da intersecção de conjuntos. ================
 */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+template<typename T>
+Conjunto<T> Conjunto<T>::operator * (Conjunto<T> & conjunto_){ 
+	Conjunto<int> tmp;
+	for( int i = 0; i < this->getTamanho(); i++ ){
+		if( conjunto_.busca(this->elementos[i]) ){
+			tmp.add(this->elementos[i]);
+		}
+	}
+	for( int j = 0; j < conjunto_.getTamanho(); j++ ){
+		if( this->busca(conjunto_.elementos[j]) ){
+			tmp.add(conjunto_.elementos[j]);
+		}
+	}
+	return tmp;
+}
 
 
 #endif //_CONJUNTO_H_

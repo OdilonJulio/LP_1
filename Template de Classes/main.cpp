@@ -10,8 +10,9 @@ int main(){
 	/* Instanciando conjuntos. */
 	Conjunto<int> conjuntoA;
 	Conjunto<int> conjuntoB;
-	Conjunto<int> conjuntoC;
-	Conjunto<int> conjuntoD;
+	Conjunto<int> conjuntoUniao;
+	Conjunto<int> conjuntoDif;
+	Conjunto<int> conjuntoInter;
 	
 	/* adiciona elementos */
 	conjuntoA.add(1);
@@ -19,7 +20,7 @@ int main(){
 	conjuntoA.add(5);
 	conjuntoA.add(7);
 	conjuntoA.add(9);
-	cout << endl << "Conjunto A: " << endl;
+	cout << endl << "Conjunto dos Ímpares (cinco primeiros): " << endl;
 	conjuntoA.getElementos();
 		
 	conjuntoB.add(2);
@@ -27,16 +28,21 @@ int main(){
 	conjuntoB.add(5);
 	conjuntoB.add(7);
 	conjuntoB.add(11);
-	cout << endl << "Conjunto B: " << endl;
+	cout << endl << "Conjunto Primos (cinco primeiros): " << endl;
 	conjuntoB.getElementos();
 	
-	cout << endl << "União de A e B: " << endl;
+	cout << endl << "União dos Ímpares e Primos " << endl;
 
-	conjuntoC = conjuntoA + conjuntoB;
-	conjuntoC.getElementos();
+	conjuntoUniao = conjuntoA + conjuntoB;
+	conjuntoUniao.getElementos();
 	
-	cout << endl << "Conjunto A - B: " << endl;
-	conjuntoD = conjuntoA - conjuntoB;
-	conjuntoD.getElementos();
+	cout << endl << "Diferença entre Ímpares e Primos: " << endl;
+	conjuntoDif = conjuntoA - conjuntoB;
+	conjuntoDif.getElementos();
+	
+	cout << endl << "Intersecção entre Ímpares e Primos: " << endl;
+	conjuntoInter = conjuntoA * conjuntoB;
+	conjuntoInter.getElementos();
+
 	return 0;
 }
